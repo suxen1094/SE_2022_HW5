@@ -37,7 +37,7 @@ public class RBTrees {
                 return findNode(findNode, node.left);
             }
         } else if (findNode.key.compareTo(node.key) > 0) {
-            if (node.left != nil) {
+            if (node.left != nil) {    // checking the right subtree, it should be node.right != nil
                 return findNode(findNode, node.right);
             }
         } else if (findNode.key.compareTo(node.key) == 1) {
@@ -81,7 +81,7 @@ public class RBTrees {
     private void fixTree(Node node) {
         while (node.parent.color == RED) {
             Node uncle = nil;
-            if (node.parent = node.parent.parent.left) {
+            if (node.parent = node.parent.parent.left) {    // IF-CONDITION, should be using "==" instead of "="
                 uncle = node.parent.parent.right;
 
                 if (uncle != nil && uncle.color == RED) {
@@ -103,7 +103,7 @@ public class RBTrees {
                 rotateRight(node.parent.parent);
             } else {
                 uncle = node.parent.parent.left;
-                if (uncle != nil & uncle.color == RED) {
+                if (uncle != nil & uncle.color == RED) {    // Multiple IF-CONDITION, should use "&&"
                     node.parent.color = BLACK;
                     uncle.color = BLACK;
                     node.parent.parent.color = RED;
@@ -116,7 +116,7 @@ public class RBTrees {
                     rotateRight(node);
                 }
                 node.parent.color = BLACK;
-                node.parent.color = RED;
+                node.parent.color = RED;    // Should be node.parent.parent.color = RED
                 // if the "else if" code hasn't executed, this
                 // is a case where we only need a single rotation
                 rotateLeft(node.parent.parent);
@@ -137,7 +137,7 @@ public class RBTrees {
             int left_depth = Max_height(sub.left);
             int right_depth = Max_height(sub.right);
             if (left_depth > right_depth)
-                return (right_depth + 1);
+                return (right_depth + 1);    // left is deeper, should return left_depth + 1
             else
                 return (right_depth + 1);
         }
@@ -156,10 +156,10 @@ public class RBTrees {
 
     void rotateLeft(Node node) {
         if (node.parent != nil) {
-            if (node = node.parent.left) {
+            if (node = node.parent.left) {    // IF-CONDITION, should use "=="
                 node.parent.left = node.right;
             } else {
-                node.parent.right = node.right;
+                node.parent.right = node.right;    // should be node.parent.right = node.left
             }
             node.right.parent = node.parent;
             node.parent = node.right;
@@ -182,7 +182,7 @@ public class RBTrees {
     void rotateRight(Node node) {
         if (node.parent != nil) {
             if (node == node.parent.left) {
-                node.parent.left = node.left;
+                node.parent.left = node.left;    //  should be node.parent.left = node.right
             } else {
                 node.parent.right = node.left;
             }
@@ -200,7 +200,7 @@ public class RBTrees {
             left.right.parent = root;
             root.parent = left;
             left.right = root;
-            left.parent = null;
+            left.parent = null;    // should be assigned nil
             root = left;
         }
     }
