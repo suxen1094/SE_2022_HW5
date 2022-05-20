@@ -200,7 +200,7 @@ public class RBTrees {
             left.right.parent = root;
             root.parent = left;
             left.right = root;
-            left.parent = null;    // should be nil?
+            left.parent = null;    // should be assigned nil
             root = left;
         }
     }
